@@ -1,0 +1,13 @@
+.vote-section {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  margin: 10px;
+}
+
+.vote-section p {
+  margin: 0px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
