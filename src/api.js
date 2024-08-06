@@ -21,3 +21,12 @@ export const getCommetnsByArticleId = (articleId) => {
     return response.data;
   });
 };
+
+export const patchVotes = (inc_votes, article_id) => {
+  console.log(inc_votes, article_id);
+  return newsApi
+    .patch(`/articles/${article_id}`, { inc_votes })
+    .then((response) => {
+      return response.data;
+    });
+};
