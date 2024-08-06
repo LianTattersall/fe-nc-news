@@ -1,18 +1,14 @@
 import { useEffect, useState } from "react";
 import { getArticles } from "../../api";
 import PageBar from "./PageBar";
+import ArticleCard from "./ArticleCard";
 
 function ArticleList({ articleList }) {
   return (
     <>
       <ul key="articleList">
         {articleList.map((article) => {
-          return (
-            <div key={article.article_id}>
-              <p>{article.title}</p>
-              <img src={article.article_img_url} alt="article image" />
-            </div>
-          );
+          return <ArticleCard article={article} key={article.article_id} />;
         })}
       </ul>
     </>

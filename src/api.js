@@ -9,3 +9,9 @@ export const getArticles = (page) => {
     return response.data;
   });
 };
+
+export const getArticleById = (articleId) => {
+  return newsApi.get(`/articles/${articleId}`).then((response) => {
+    return response.data;
+  });
+};

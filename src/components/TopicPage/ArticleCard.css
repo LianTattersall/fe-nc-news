@@ -1,0 +1,22 @@
+.article-card {
+  display: flex;
+  flex-wrap: wrap;
+
+  border-left: 3px solid white;
+  padding: 5px;
+}
+
+.article-card:hover {
+  border-left: 3px solid black;
+}
+
+.article-card img {
+  height: 200px;
+  width: 300px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.articleInfo {
+  width: 880px;
+}
