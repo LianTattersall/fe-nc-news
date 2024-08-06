@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCommetnsByArticleId } from "../../api";
+import "./CommentList.css";
 
 function CommentList({ article_id }) {
   const [comments, setComments] = useState([]);
@@ -9,20 +10,18 @@ function CommentList({ article_id }) {
     });
   }, []);
   return (
-    <>
-      <ul>
-        {comments.map((comment) => {
-          return (
-            <li key={comment.comment_id}>
-              <p style={{ fontWeight: "bolder", marginBottom: "0px" }}>
-                {comment.author}
-              </p>
-              <p style={{ marginTop: "2px" }}>{comment.body}</p>
-            </li>
-          );
-        })}
-      </ul>
-    </>
+    <ul className="comment-list">
+      {comments.map((comment) => {
+        return (
+          <li key={comment.comment_id}>
+            <p style={{ fontWeight: "bolder", marginBottom: "0px" }}>
+              {comment.author}
+            </p>
+            <p style={{ marginTop: "2px" }}>{comment.body}</p>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 
