@@ -36,7 +36,7 @@ function Articles() {
       </p>
     );
   }
-  console.log(page);
+
   return (
     <>
       <ArticleList articleList={articlesList} />

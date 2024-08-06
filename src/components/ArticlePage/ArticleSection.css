@@ -1,0 +1,28 @@
+.article-section h2 {
+  text-align: center;
+}
+
+.article-section img {
+  display: block;
+  width: 100%;
+  margin: auto;
+}
+
+.article-section {
+  width: 85%;
+  margin: auto;
+}
+
+.article-section .date {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.article-section .author {
+  margin-bottom: 5px;
+  font-weight: bolder;
+}
+
+.article-section .body {
+  margin-top: 0px;
+}
