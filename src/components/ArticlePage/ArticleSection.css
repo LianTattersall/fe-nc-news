@@ -6,6 +6,8 @@
   display: block;
   width: 100%;
   margin: auto;
+  max-height: 600px;
+  object-fit: cover;
 }
 
 .article-section {
@@ -13,9 +15,12 @@
   margin: auto;
 }
 
-.article-section .date {
-  text-align: right;
-  margin-top: 10px;
+.article-section .vote-date {
+  display: flex;
+}
+
+.spacer {
+  flex: 1;
 }
 
 .article-section .author {
@@ -25,4 +30,5 @@
 
 .article-section .body {
   margin-top: 0px;
+  font-size: 18px;
 }
