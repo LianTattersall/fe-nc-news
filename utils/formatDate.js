@@ -14,7 +14,8 @@ export function formatDate(date) {
     12: "December",
   };
   const dateTime = date.split("T");
-  const date2 = dateTime[0].split("-");
+  let date2 = dateTime[0].split("-");
+  date2 = date2.map((date) => Number(date));
   const time = dateTime[1].split(":");
   return `${date2[2]} ${months[date2[1]]} ${date2[0]}, ${time[0]}:${time[1]}`;
 }
