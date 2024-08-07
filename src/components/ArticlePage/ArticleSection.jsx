@@ -6,12 +6,18 @@ import VoteSection from "./VoteSection";
 
 function ArticleSection({ article_id }) {
   const [article, setArticle] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getArticleById(article_id).then((data) => {
+      setLoading(false);
       setArticle(data.article);
     });
   }, []);
+
+  if (loading) {
+    return <p>Loading Article</p>;
+  }
 
   return (
     <>
