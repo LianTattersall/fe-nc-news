@@ -4,8 +4,6 @@ import Articles from "./Articles";
 import "./TopicPage.css";
 
 function TopicPage() {
-  const { slug } = useParams();
-
   return (
     <main style={{ marginTop: "50px" }}>
       <Articles />
