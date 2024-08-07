@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CommentList from "./CommentList";
-import { getCommetnsByArticleId } from "../../api";
 import AddComment from "./AddComment";
 
 function CommentSection({ article_id }) {
@@ -8,12 +7,8 @@ function CommentSection({ article_id }) {
   return (
     <>
       <h3>Comments</h3>
-      <AddComment article_id={article_id} setComments={setComments} />
-      <CommentList
-        article_id={article_id}
-        comments={comments}
-        setComments={setComments}
-      />
+      <AddComment setComments={setComments} />
+      <CommentList comments={comments} setComments={setComments} />
     </>
   );
 }
