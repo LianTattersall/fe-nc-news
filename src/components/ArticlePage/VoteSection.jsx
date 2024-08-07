@@ -4,7 +4,6 @@ import "./VoteSection.css";
 import { patchVotes } from "../../api";
 
 function VoteSection({ initialVotes, article_id }) {
-  console.log(article_id);
   const [incVotes, setIncVotes] = useState(0);
   const [err, setErr] = useState(false);
 
@@ -18,10 +17,14 @@ function VoteSection({ initialVotes, article_id }) {
 
   function downClickHandler() {
     setIncVotes((curr) => curr - 1);
-    patchVotes(-1, article_id).catch(() => {
-      setErr(true);
-      setIncVotes((curr) => curr + 1);
-    });
+    patchVotes(-1, article_id)
+      .then(() => {
+        setErr(false);
+      })
+      .catch(() => {
+        setErr(true);
+        setIncVotes((curr) => curr + 1);
+      });
   }
   return (
     <section className="vote-section">

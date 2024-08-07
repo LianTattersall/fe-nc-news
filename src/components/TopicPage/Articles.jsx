@@ -40,7 +40,7 @@ function Articles() {
   return (
     <>
       <ArticleList articleList={articlesList} />
-      <PageBar setPage={setPage} totalCount={totalCount} />
+      <PageBar setPage={setPage} totalCount={totalCount} page={page} />
     </>
   );
 }

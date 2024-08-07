@@ -2,13 +2,19 @@ import { useEffect, useState } from "react";
 import { getCommetnsByArticleId } from "../../api";
 import "./CommentList.css";
 
-function CommentList({ article_id }) {
-  const [comments, setComments] = useState([]);
+function CommentList({ article_id, comments, setComments }) {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     getCommetnsByArticleId(article_id).then((data) => {
       setComments(data.comments);
+      setLoading(false);
     });
   }, []);
+  console.log(comments);
+  if (loading) {
+    return <p>Loading comments.</p>;
+  }
   return (
     <ul className="comment-list">
       {comments.map((comment) => {
