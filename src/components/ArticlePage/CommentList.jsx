@@ -3,10 +3,12 @@ import { getCommetnsByArticleId } from "../../api";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./CommentList.css";
 import { deleteComment } from "../../api";
+import { useParams } from "react-router-dom";
 
-function CommentList({ article_id, comments, setComments }) {
+function CommentList({ comments, setComments }) {
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(false);
+  const { article_id } = useParams();
 
   useEffect(() => {
     getCommetnsByArticleId(article_id).then((data) => {
