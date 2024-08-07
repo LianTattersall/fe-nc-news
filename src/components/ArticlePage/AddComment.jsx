@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { postComment } from "../../api";
+import { useParams } from "react-router-dom";
 
-function AddComment({ setComments, article_id }) {
+function AddComment({ setComments }) {
   const [textInput, setTextInput] = useState("");
   const [err, setErr] = useState(false);
+  const { article_id } = useParams();
 
   function handleChange(event) {
     setTextInput(event.target.value);

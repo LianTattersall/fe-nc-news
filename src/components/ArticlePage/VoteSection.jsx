@@ -2,10 +2,12 @@ import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
 import { useState } from "react";
 import "./VoteSection.css";
 import { patchVotes } from "../../api";
+import { useParams } from "react-router-dom";
 
-function VoteSection({ initialVotes, article_id }) {
+function VoteSection({ initialVotes }) {
   const [incVotes, setIncVotes] = useState(0);
   const [err, setErr] = useState(false);
+  const { article_id } = useParams();
 
   function upClickHandler() {
     setIncVotes((curr) => curr + 1);

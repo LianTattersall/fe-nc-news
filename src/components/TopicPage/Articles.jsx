@@ -4,7 +4,7 @@ import ArticleList from "./ArticleList";
 import PageBar from "./PageBar";
 import { useParams } from "react-router-dom";
 
-function Articles() {
+function Articles({ queries: { sort_by, order } }) {
   const [articlesList, setArticlesList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -14,17 +14,18 @@ function Articles() {
 
   useEffect(() => {
     setIsLoading(true);
-    getArticles(page, slug)
+    getArticles(page, slug, sort_by, order)
       .then((articleData) => {
         setIsLoading(false);
         setArticlesList(articleData.articles);
         setTotalCount(articleData.total_count);
       })
-      .catch(() => {
+      .catch((err) => {
         setIsLoading(false);
         setIsError(true);
+        console.log(err);
       });
-  }, [page, slug]);
+  }, [page, slug, sort_by, order]);
 
   if (isLoading) {
     return <p>Loading...</p>;

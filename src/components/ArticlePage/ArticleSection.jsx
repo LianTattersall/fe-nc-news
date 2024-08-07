@@ -25,7 +25,7 @@ function ArticleSection({ article_id }) {
         <h2>{article.title}</h2>
         <img src={article.article_img_url} alt="article img" />
         <div className="vote-date">
-          <VoteSection initialVotes={article.votes} article_id={article_id} />
+          <VoteSection initialVotes={article.votes} />
           <div className="spacer"></div>
           <p className="date">
             {article.created_at ? ` ${formatDate(article.created_at)}` : null}
