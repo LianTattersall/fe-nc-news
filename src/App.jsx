@@ -9,7 +9,7 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/topics/:slug" element={<TopicPage />} />
+        <Route path="/topics/:slug?" element={<TopicPage />} />
         <Route path="/articles/:article_id" element={<ArticlePage />} />
       </Routes>
     </>
