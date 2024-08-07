@@ -4,10 +4,12 @@ const newsApi = axios.create({
   baseURL: "https://be-nc-news-mh3z.onrender.com/api",
 });
 
-export const getArticles = (page) => {
-  return newsApi.get("/articles", { params: { p: page } }).then((response) => {
-    return response.data;
-  });
+export const getArticles = (page, topic) => {
+  return newsApi
+    .get("/articles", { params: { p: page, topic } })
+    .then((response) => {
+      return response.data;
+    });
 };
 
 export const getArticleById = (articleId) => {
@@ -40,4 +42,10 @@ export const postComment = (article_id, body, username) => {
 
 export const deleteComment = (comment_id) => {
   return newsApi.delete(`comments/${comment_id}`);
+};
+
+export const getTopics = () => {
+  return newsApi.get(`/topics`).then((response) => {
+    return response.data;
+  });
 };
