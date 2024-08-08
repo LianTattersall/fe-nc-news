@@ -42,7 +42,9 @@ function Header() {
           {DrawerList}
         </Drawer>
       </div>
-      <h1>NC News</h1>
+      <Link to="/">
+        <h1>NC News</h1>
+      </Link>
     </nav>
   );
 }
