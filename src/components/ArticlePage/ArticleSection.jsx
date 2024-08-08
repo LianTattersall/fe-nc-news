@@ -7,16 +7,29 @@ import VoteSection from "./VoteSection";
 function ArticleSection({ article_id }) {
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
+  const [isErr, setIsErr] = useState(false);
+  const [errData, setErrData] = useState(null);
 
   useEffect(() => {
-    getArticleById(article_id).then((data) => {
-      setLoading(false);
-      setArticle(data.article);
-    });
+    getArticleById(article_id)
+      .then((data) => {
+        setIsErr(false);
+        setLoading(false);
+        setArticle(data.article);
+      })
+      .catch((err) => {
+        setLoading(false);
+        setErrData(err.response.data.msg);
+        setIsErr(true);
+      });
   }, []);
 
   if (loading) {
     return <p>Loading Article</p>;
+  }
+
+  if (isErr) {
+    return <h2>{errData}</h2>;
   }
 
   return (
