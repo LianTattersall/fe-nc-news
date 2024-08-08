@@ -10,12 +10,14 @@ function Articles({ queries: { sort_by, order } }) {
   const [isError, setIsError] = useState(false);
   const [totalCount, setTotalCount] = useState(0);
   const [page, setPage] = useState(1);
+  const [err, setErr] = useState(null);
   const { slug } = useParams();
-
+  console.log(slug);
   useEffect(() => {
     setIsLoading(true);
     getArticles(page, slug, sort_by, order)
       .then((articleData) => {
+        setIsError(false);
         setIsLoading(false);
         setArticlesList(articleData.articles);
         setTotalCount(articleData.total_count);
@@ -23,7 +25,7 @@ function Articles({ queries: { sort_by, order } }) {
       .catch((err) => {
         setIsLoading(false);
         setIsError(true);
-        console.log(err);
+        setErr(err.response.data.msg);
       });
   }, [page, slug, sort_by, order]);
 
@@ -32,12 +34,7 @@ function Articles({ queries: { sort_by, order } }) {
   }
 
   if (isError) {
-    return (
-      <p>
-        An error has occured and the page cannot be loaded at the moment.
-        Apologies for the inconvenience.
-      </p>
-    );
+    return <h2>{err}</h2>;
   }
 
   return (
