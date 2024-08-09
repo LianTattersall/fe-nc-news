@@ -18,10 +18,12 @@ export const getArticleById = (articleId) => {
   });
 };
 
-export const getCommetnsByArticleId = (articleId) => {
-  return newsApi.get(`/articles/${articleId}/comments`).then((response) => {
-    return response.data;
-  });
+export const getCommetnsByArticleId = (articleId, offset) => {
+  return newsApi
+    .get(`/articles/${articleId}/comments`, { params: { offset } })
+    .then((response) => {
+      return response.data;
+    });
 };
 
 export const patchVotes = (inc_votes, article_id) => {

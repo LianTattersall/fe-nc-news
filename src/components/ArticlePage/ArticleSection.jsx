@@ -3,11 +3,13 @@ import { getArticleById } from "../../api";
 import { formatDate } from "../../../utils/formatDate";
 import "./ArticleSection.css";
 import VoteSection from "./VoteSection";
+import React from "react";
+import Lottie from "lottie-react";
+import Loading from "../../../LoadingAnimation.json";
 
-function ArticleSection({ article_id }) {
+function ArticleSection({ article_id, setIsErr, isErr }) {
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
-  const [isErr, setIsErr] = useState(false);
   const [errData, setErrData] = useState(null);
 
   useEffect(() => {
@@ -25,7 +27,9 @@ function ArticleSection({ article_id }) {
   }, []);
 
   if (loading) {
-    return <p>Loading Article</p>;
+    return (
+      <Lottie animationData={Loading} loop={true} style={{ height: "300px" }} />
+    );
   }
 
   if (isErr) {

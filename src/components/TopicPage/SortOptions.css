@@ -1,0 +1,13 @@
+.sort-options {
+  margin-left: 48px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sort-options label {
+  margin-right: 8px;
+}
+
+.sort-options label select {
+  margin-left: 5px;
+}

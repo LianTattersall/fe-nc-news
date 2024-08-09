@@ -9,9 +9,10 @@ function ArticleCard({ article }) {
         <img src={article.article_img_url} alt="article img" />
         <div className="articleInfo">
           <h2>{article.title}</h2>
+          <p style={{ fontWeight: "bold" }}>{article.topic}</p>
           <p>Author: {article.author}</p>
-          <p>{article.topic}</p>
           <p>Created at: {formatDate(article.created_at)}</p>
+          <p>Votes: {article.votes}</p>
         </div>
       </li>
     </Link>

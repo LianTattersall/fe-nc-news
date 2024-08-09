@@ -7,8 +7,39 @@ import { useParams } from "react-router-dom";
 
 function CommentList({ comments, setComments }) {
   const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [err, setErr] = useState(false);
+  const [moreComments, setMoreComments] = useState(true);
   const { article_id } = useParams();
+
+  useEffect(() => {
+    function handleScroll() {
+      if (
+        Math.abs(
+          document.documentElement.scrollTop +
+            window.innerHeight -
+            document.documentElement.scrollHeight
+        ) < 1
+      ) {
+        if (!loadingMore && moreComments) {
+          setLoadingMore(true);
+          getCommetnsByArticleId(article_id, comments.length).then((data) => {
+            setLoadingMore(false);
+            if (data.comments.length === 0) {
+              setMoreComments(false);
+            }
+            setComments((curr) => [...curr, ...data.comments]);
+          });
+        }
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [comments, moreComments, loadingMore]);
 
   useEffect(() => {
     getCommetnsByArticleId(article_id).then((data) => {

@@ -6,11 +6,12 @@ import { useState } from "react";
 
 function TopicPage() {
   const [queries, setQueries] = useState({});
+  const [isError, setIsError] = useState(false);
 
   return (
-    <main style={{ marginTop: "50px" }}>
-      <SortOptions setQueries={setQueries} />
-      <Articles queries={queries} />
+    <main style={{ marginTop: "70px" }}>
+      {isError ? null : <SortOptions setQueries={setQueries} />}
+      <Articles queries={queries} isError={isError} setIsError={setIsError} />
     </main>
   );
 }

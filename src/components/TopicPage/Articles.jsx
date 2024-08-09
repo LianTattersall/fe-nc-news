@@ -3,16 +3,18 @@ import { getArticles } from "../../api";
 import ArticleList from "./ArticleList";
 import PageBar from "./PageBar";
 import { useParams } from "react-router-dom";
+import React from "react";
+import Lottie from "lottie-react";
+import Loading from "../../../LoadingAnimation.json";
 
-function Articles({ queries: { sort_by, order } }) {
+function Articles({ queries: { sort_by, order }, isError, setIsError }) {
   const [articlesList, setArticlesList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
   const [totalCount, setTotalCount] = useState(0);
   const [page, setPage] = useState(1);
   const [err, setErr] = useState(null);
   const { slug } = useParams();
-  console.log(slug);
+
   useEffect(() => {
     setIsLoading(true);
     getArticles(page, slug, sort_by, order)
@@ -30,7 +32,9 @@ function Articles({ queries: { sort_by, order } }) {
   }, [page, slug, sort_by, order]);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <Lottie animationData={Loading} loop={true} style={{ height: "300px" }} />
+    );
   }
 
   if (isError) {

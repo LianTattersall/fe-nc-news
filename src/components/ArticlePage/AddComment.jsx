@@ -42,7 +42,10 @@ function AddComment({ setComments }) {
   }
 
   return (
-    <form style={{ margin: "40px" }}>
+    <form
+      style={{ marginLeft: "40px", marginRight: "40px", marginTop: "30px" }}
+      className="add-comment"
+    >
       <label htmlFor="input-comment">Add a comment</label>
       <textarea
         id="input-comment"

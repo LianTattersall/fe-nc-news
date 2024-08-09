@@ -43,7 +43,7 @@ function Header() {
         </Drawer>
       </div>
       <Link to="/">
-        <h1>NC News</h1>
+        <h1 style={{ marginTop: "24px" }}>NC News</h1>
       </Link>
     </nav>
   );

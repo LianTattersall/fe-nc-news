@@ -20,3 +20,12 @@
 .articleInfo {
   width: 880px;
 }
+
+.article-card p {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.article-card h2 {
+  margin-bottom: 7px;
+}

@@ -6,7 +6,17 @@ function CommentSection({ article_id }) {
   const [comments, setComments] = useState([]);
   return (
     <>
-      <h3>Comments</h3>
+      <h3
+        className="comment-title"
+        style={{
+          marginLeft: "40px",
+          marginRight: "40px",
+          borderBottom: "1px solid black",
+          marginTop: "40px",
+        }}
+      >
+        Comments
+      </h3>
       <AddComment setComments={setComments} />
       <CommentList comments={comments} setComments={setComments} />
     </>
